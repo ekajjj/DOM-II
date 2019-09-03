@@ -11,7 +11,7 @@ funBusLogo.addEventListener('mouseover', element => {element.target.style.color 
 const lgHeader = document.querySelector('.logo-heading');
 
 lgHeader.addEventListener('mouseenter', e => {
-  lgHeader.textContent = 'Large Fun Bus';
+  lgHeader.textContent = 'mouseon Fun Bus';
 });
 
 lgHeader.addEventListener('mouseout', e => {
@@ -36,12 +36,12 @@ function zoom(event) {
     scale = Math.min(Math.max(.125, scale), 4);
   
     // Apply scale transform
-    el.style.transform = `scale(${scale})`;
+    imgZoom.style.transform = `scale(${scale})`;
   }
   
   let scale = 1;
-  const el = document.querySelector('img');
-  el.onwheel = zoom;
+  const imgZoom = document.querySelector('img');
+  imgZoom.onwheel = zoom;
 
   // drag/drop
 
@@ -68,6 +68,13 @@ window.addEventListener('load', (event) => {
 // focus
 
 
+// onclick
+
+const onclickTest = document.querySelector('footer');
+const onClick1 = window.addEventListener('onclick', event => {
+    console.log('footer clicked')
+  })
+
 // resize
 
 const mobileResize = window.addEventListener('resize', function() {
@@ -76,11 +83,25 @@ const mobileResize = window.addEventListener('resize', function() {
     }
   })
 
+
+// could put a seperate if in just a generalResize
 const tabletResize= window.addEventListener('resize', function() {
     if(document.documentElement.clientWidth <= 800) {
       alert('tablet query engaged');
     }
   })
+
+
+// scroll
+
+let counter = 0;
+window.addEventListener("scroll", function (event) {
+    counter++;
+    if (counter > 100) {
+        alert("scroll counter > 100");
+        counter = 0;
+    }
+});
 
 // dblclick
 const dblClick = document.querySelector('.intro')
@@ -95,4 +116,14 @@ const btnClick = document.querySelector('.btn')
 
 btnClick.addEventListener('dblclick', function(event) {
   alert('thanks for clicking the button');
+})
+
+
+//preventDefault
+
+const navs = document.querySelector('.nav-link')
+
+navs.addEventListener('click', event => {
+  event.preventDefault();
+  console.log('preventDefault');
 })
